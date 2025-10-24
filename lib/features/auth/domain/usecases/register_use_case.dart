@@ -1,10 +1,15 @@
-class RegisterUseCase {
-  Future<String> call(
-    {required String username,
-    required String email,
-    required String password}
-  ) async {
+import 'package:x_twitter_clone/features/auth/domain/repository/auth_repository.dart';
 
+class RegisterUseCase {
+  final AuthRepository authRepository;
+
+  RegisterUseCase({required this.authRepository});
+
+  Future<String> call({
+    required String username,
+    required String email,
+    required String password,
+  }) async {
     if (email.isEmpty) {
       throw Exception('Email cannot be empty');
     }
@@ -13,6 +18,8 @@ class RegisterUseCase {
       throw Exception('Password cannot be empty');
     }
 
-    return 'token';
+    final token = await authRepository.register();
+
+    return token;
   }
 }
