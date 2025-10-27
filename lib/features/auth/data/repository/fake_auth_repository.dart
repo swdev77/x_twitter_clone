@@ -1,9 +1,9 @@
 import 'package:x_twitter_clone/features/auth/domain/repository/auth_repository.dart';
 
-class MockAuthRepository implements AuthRepository {
+class FakeAuthRepository implements AuthRepository {
   @override
   Future<String> register() async {
-    return 'token';
+    return 'fake_token';
   }
 
   @override
@@ -11,6 +11,6 @@ class MockAuthRepository implements AuthRepository {
     required String email,
     required String password,
   }) async {
-    return 'token';
+    return 'fake_token';
   }
 }
